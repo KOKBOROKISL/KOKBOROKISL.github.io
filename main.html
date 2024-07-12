@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>KISL Application</title>
+        <link rel="stylesheet" href="style.css">
+        <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
+        <script type="module" src="./main2.js"></script> 
+         <!-- Link Swiper's CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+
+    </head>
+    <body>
+        <header>
+            <a href="#" class="logo"><i class='bx bx-world'></i>KISL</a>
+            
+            <ul class="navbar">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#reviews">KISL Introduction</a></li>
+                <li><a href="#new">Search Dictionary</a></li>
+                <li><a href="#footer">About Us</a></li>
+            </ul>
+            <div class="header-icons">
+                <i class='bx bx-menu' id="menu-icon"></i>
+                <i class='bx bx-search-alt' id="search-icon"></i>
+                <i class='bx bx-user-circle' id="user-icon"></i>
+            </div>
+
+            <div class="search-box">
+                <input type="text" id="search-bar" placeholder="Search..." oninput="showSuggestions()">
+                <div id="suggestions"></div>
+            </div>
+            <script>
+                const words = [
+            "Abbreviation", "Abeyance", "Beautiful", "About", "Above", "Absent", "Absorb", 
+            "Absorption", "Acceleration", "Accept", "Acceptance", "Bad-1", "Bad-2", "Bail", "Bake", "Balance", "Ball","Before","Cabbage", "Cake", 
+            "Calculation", "Calculator", "Calcutta" , "Baby" , "Back", "Cake" , "Can", "Calm","Candle", "Dance","Dark","Daughter","Day","Deaf",
+            "kókbara, kókkhochor","twiwi","naithok"
+        ];
+        const wordToFileMap = {
+            "Abbreviation": "abbreviation.html",
+            "kókbara, kókkhochor" : "abbreviation.html",
+            "Abeyance": "abeyance.html",
+            "Beautiful": "beautiful.html",
+            "naithok": "beautiful.html",
+            "About": "about.html",
+            "twiwi": "about.html",
+            "Above": "above.html",
+            "Absent": "absent.html",
+            "Absorb": "absorb.html",
+            "Absorption": "absorption.html",
+            "Acceleration": "acceleration.html",
+            "Accept": "accept.html",
+            "Acceptance": "acceptance.html",
+            "Baby" : "baby.html",
+            "Back": "back.html",
+            "Bad-1": "bad-1.html",
+            "Bad-2": "bad-2.html",
+            "Bail": "bail.html",
+            "Bake": "bake.html",
+            "Balance": "balance.html",
+            "Ball": "ball.html",
+            "Before":"before.html",
+            "Cabbage": "cabbage.html",
+            "Cake": "cake.html",
+            "Calculation": "calculation.html",
+            "Calculator": "calculator.html",
+            "Calcutta": "calcutta.html",
+            "Calm": "calm.html",
+            "Can": "can.html",
+            "Candle": "candle.html",
+            "Dance": "dance.html",
+            "Dark": "dark.html",
+            "Daughter": "daughter.html",
+            "Day": "day.html",
+            "Deaf": "deaf.html",
+
+
+        };
+        
+                function showSuggestions() {
+                    const input = document.getElementById('search-bar').value.toLowerCase();
+                    const suggestionsContainer = document.getElementById('suggestions');
+                    suggestionsContainer.innerHTML = '';
+        
+                    if (input === '') {
+                        return;
+                    }
+        
+                    const filteredWords = words.filter(word => word.toLowerCase().startsWith(input));
+        
+                    filteredWords.forEach(word => {
+                        const suggestionItem = document.createElement('div');
+                        suggestionItem.className = 'suggestion-item';
+                        suggestionItem.textContent = word;
+                        suggestionItem.onclick = () => selectSuggestion(word);
+                        suggestionsContainer.appendChild(suggestionItem);
+                    });
+                }
+        
+                function selectSuggestion(word) {
+                    const searchBar = document.getElementById('search-bar');
+                    searchBar.value = word;
+                    document.getElementById('suggestions').innerHTML = '';
+                    window.location.href = wordToFileMap[word];
+                }
+            </script>
+
+            <div class="user">
+                <div>First Name : <span id="loggedUserFName"></span></div>
+            <div>Last Name : <span id="loggedUserLName"></span></div>
+            <div>Email : <span id="loggedUserEmail"></span></div>
+               <a href="index.html"><button id="Logout" class="logout">Logout</button></a>
+            </div>
+        </header>
+        <section class="Home" id="home">
+        </div>
+        <div class="home-img">
+            <img src="imgs/Kisl.jpg" alt="">
+        </div>
+        <div class="home-text">
+            <h1><span>Welcome to KISL Portal</span></h1>
+        </div>
+            <div class="right">
+                <h3>Sign Language is a set of hand and facial gestures used to communicated, most often by the hearing and speech impaired. The purpose of the application is to bridge the communication gap between the hearing and deaf communities by providing an intuitive and accessible platform for learning and practicing Indian Sign Language.</h3>
+            </div>
+        </section>
+        <section class="reviews" id="reviews">
+            <div class="heading">
+                <h1>KISL<span>Introduction</span></h1>
+            </div>
+            <div class="welcome">
+                <video width="400" controls>
+                    <source src="./videos/ISL Intro.mp4" type="video/mp4">
+                </video>
+            </div>
+            <div class="review-container">
+                <div class="box">
+                    <img src="/imgs/I.jpeg" alt="">
+                    <p> This Website offers a huge collection of Indian Sign Language (ISL) signs. Each sign has an image, running video and threaded discussions. It is an ideal resource to use while you learn/teach Indian Sign Language.  Each sign has an image, running video and threaded discussions.  We are continually adding more signs and designing new services to empower the Deaf. Please share your ideas and comments and help us make this service better. </p>
+                    <h2>English</h2>
+                </div>
+                <div class="box">
+                    <img src="/imgs/S.jpeg" alt="">
+                    <p>এই ওয়েবসাইটটি ভারতীয় সাইন ল্যাঙ্গুয়েজ (ISL) চিহ্নগুলির একটি বিশাল সংগ্রহ অফার করে৷ প্রতিটি চিহ্নের একটি ছবি, চলমান ভিডিও এবং থ্রেডেড আলোচনা রয়েছে। আপনি ভারতীয় সাংকেতিক ভাষা শেখা/শিখানোর সময় এটি ব্যবহার করার জন্য একটি আদর্শ সম্পদ।  প্রতিটি চিহ্নের একটি ছবি, চলমান ভিডিও এবং থ্রেডেড আলোচনা রয়েছে।  বধিরদের ক্ষমতায়নের জন্য আমরা ক্রমাগত আরও লক্ষণ যোগ করছি এবং নতুন পরিষেবা ডিজাইন করছি। আপনার ধারনা এবং মন্তব্য শেয়ার করুন এবং আমাদের এই পরিষেবা আরও ভাল করতে সাহায্য করুন.</p>
+                    <h2>Bengali</h2>
+                </div>
+                <div class="box">
+                    <img src="/imgs/L.jpeg" alt="">
+                    <p>O website Indian sign language ( ISL ) no twui Sep kaham rwi tongo. Bebak sign ni no bini Mangpili tongo, Running Video tei threaded Discussion  rok tongo. Jephru nung Indian Sign Language srwngo eba Phrungo aphru obo belaino hamkukgo use khlaithani.  Bebak sign ni no bini Mangpili tongo, Running Video tei threaded Discussion  rok tongo.
+                        Chwng Kwtal Kwtal sign rok tei Sevice rok adding khlai tongo. Norokni Ideas tei saimanna muchungma rok chwngno sajadi, abobai chwng tei kaham service norokno rwi manna bagwi. </p>
+                    <h2>Kokborok</h2>
+                </div>
+            </div>
+        </section>
+        <section class="new" id="new">
+            <div class="heading">
+                <h1>Search<span>Dictionary</span></h1>
+            </div>
+            <div class="swiper new-arrival"> 
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide box">
+                        <div class="content">
+                        <a href="a.html"><button id="a" class="logout">A</button></a>
+                        <a href="b.html"><button id="b" class="logout">B</button></a>
+                        <a href="c.html"><button id="c" class="logout">C</button></a>
+                        <a href="d.html"><button id="d" class="logout">D</button></a>
+                        <a href="e.html"><button id="e" class="logout">E</button></a>
+                        <a href="f.html"><button id="f" class="logout">F</button></a>
+                        <a href="g.html"><button id="a" class="logout">G</button></a>
+                        <a href="h.html"><button id="b" class="logout">H</button></a>
+                        <a href="i.html"><button id="c" class="logout">I</button></a>
+                        <a href="j.html"><button id="d" class="logout">J</button></a>
+                        <a href="k.html"><button id="e" class="logout">K</button></a>
+                        <a href="l.html"><button id="f" class="logout">L</button></a>
+                        <a href="m.html"><button id="f" class="logout">M</button></a>
+                        </div>
+                    </div>
+                    <div class="swiper-slide box">
+                        <div class="content">
+                        <a href="n.html"><button id="a" class="logout">N</button></a>
+                        <a href="o.html"><button id="b" class="logout">O</button></a>
+                        <a href="p.html"><button id="c" class="logout">P</button></a>
+                        <a href="q.html"><button id="d" class="logout">Q</button></a>
+                        <a href="r.html"><button id="e" class="logout">R</button></a>
+                        <a href="s.html"><button id="f" class="logout">S</button></a>
+                        <a href="t.html"><button id="a" class="logout">T</button></a>
+                        <a href="u.html"><button id="b" class="logout">U</button></a>
+                        <a href="v.html"><button id="c" class="logout">V</button></a>
+                        <a href="w.html"><button id="d" class="logout">W</button></a>
+                        <a href="x&y.html"><button id="e" class="logout">X & Y</button></a>
+                        <a href="z.html"><button id="f" class="logout">Z</button></a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+        
+        <section class="footer" id="footer">
+            <div class="heading">
+                <h1>About<span>Us</span></h1>
+            </div>
+            <div class="footer-box">
+                <h2>KISL</h2>
+                <p>KISL is an Indian Sign Language (ISL) application tailored for Kokborok and Bengali speakers. It helps deaf and mute individuals access comprehensive ISL resources, fostering effective communication and social inclusion.</p>
+                
+                <div class="social">
+                    <a href="#"><i class='bx bxl-gmail'></i></a>
+                    <a href="#"><i class='bx bxl-facebook'></i></a>
+                    <a href="#"><i class='bx bxl-instagram'></i></a>
+                </div>
+            </div>
+            <div class="footer-box">
+                <h3>Support</h3>
+                <li><a href="#">Help & Support</a></li>
+                <li><a href="#">Terms of Use</a></li>
+                <li><a href="#">FAQ</a></li>
+            </div>
+        </section>
+
+    
+
+
+
+
+
+
+      <!-- Swiper JS -->
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script> 
+      <script src="main.js"></script>   
+    </body>
+</html>
